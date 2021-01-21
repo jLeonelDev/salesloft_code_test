@@ -1,0 +1,23 @@
+version: "3.1"
+services:
+  salesloft:
+    image: elixir:1.11.3-alpine
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+      - build:/app/_build
+      - deps:/app/deps
+    env_file:
+      - ./backend/.env
+    working_dir: /app
+    tty: true
+    command: >
+            sh -c "mix local.hex --force &&
+                   mix local.rebar --force && 
+                   mix deps.get &&
+                   mix phx.server"
+
+volumes:
+  build:
+  deps:
