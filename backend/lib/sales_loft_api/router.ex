@@ -8,6 +8,6 @@ defmodule SalesLoftApi.Router do
   scope "/", SalesLoftApi do
     pipe_through :api
 
-    get "/", PageController, :index
+    get "/people", PeopleController, :get
   end
 end
