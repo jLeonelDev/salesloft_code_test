@@ -1,5 +1,5 @@
-defmodule SalesLoftWeb.PageControllerTest do
-  use SalesLoftWeb.ConnCase
+defmodule SalesLoftApi.PeopleControllerTest do
+  use SalesLoftApi.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
