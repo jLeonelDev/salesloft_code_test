@@ -14,6 +14,15 @@ defmodule SalesLoftApi.PeopleController do
   """
   @spec get(Plug.Conn.t(), map) :: {atom, map}
   def get(conn, %{"page" => page}) do
+    _get(conn, page)
+  end
+
+  def get(conn, _) do
+    _get(conn, 1)
+  end
+
+  @spec _get(Plug.Conn.t(), integer) :: {atom, map}
+  defp _get(_conn, page) do
     try do
       case SalesLoftApiClient.getPeople(page) do
         {:ok, %HTTPoison.Response{body: body}} ->
