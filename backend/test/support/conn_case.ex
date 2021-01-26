@@ -30,4 +30,14 @@ defmodule SalesLoftApi.ConnCase do
       @endpoint SalesLoftApi.Endpoint
     end
   end
+
+  setup tags do
+    conn =
+      Phoenix.ConnTest.build_conn()
+      |> Plug.Conn.put_req_header("accept", "application/json")
+      |> Plug.Conn.put_req_header("content-type", "application/json")
+      |> Plug.Conn.assign(:test_execution, true)
+
+    {:ok, conn: conn}
+  end
 end
