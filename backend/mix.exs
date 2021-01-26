@@ -40,7 +40,8 @@ defmodule SalesLoft.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:httpoison, "~> 1.8"}
+      {:httpoison, "~> 1.8"},
+      {:mock, "~> 0.3.6", only: :test}
     ]
   end
 
