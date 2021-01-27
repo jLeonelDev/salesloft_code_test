@@ -11,12 +11,9 @@ class NavBar extends React.Component {
       moveToNextPage,
       moveToPreviousPage,
     } = this.context;
+
     return (
-      <nav
-        className="navbar is-fixed-top"
-        role="navigation"
-        aria-label="main navigation"
-      >
+      <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-menu p_always-display">
           <div className="navbar-start">
             <button
