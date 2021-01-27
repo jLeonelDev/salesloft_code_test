@@ -1,31 +1,60 @@
 import "./navbar.css";
+import React from "react";
+import PeopleContext from "./../../contexts/people/peopleContext";
 
-function NavBar() {
-  return (
-    <nav
-      className="navbar is-fixed-top"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div className="navbar-menu p_always-display">
-        <div className="navbar-start">
-          <button class="button is-primary is-medium p_fixed-button-size">
-            Previous Page
-          </button>
-        </div>
+class NavBar extends React.Component {
+  render() {
+    let {
+      isLoading,
+      currentPage,
+      nextPage,
+      moveToNextPage,
+      moveToPreviousPage,
+    } = this.context;
+    return (
+      <nav
+        className="navbar is-fixed-top"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="navbar-menu p_always-display">
+          <div className="navbar-start">
+            <button
+              className={
+                isLoading
+                  ? "button is-primary is-medium is-loading p_fixed-button-size"
+                  : "button is-primary is-medium p_fixed-button-size"
+              }
+              onClick={moveToPreviousPage}
+              disabled={currentPage === 1}
+            >
+              Previous Page
+            </button>
+          </div>
 
-        <div className="navbar-item">
-          <h1 class="title">Page</h1>
-        </div>
+          <div className="navbar-item">
+            <h1 className="title">Page {currentPage}</h1>
+          </div>
 
-        <div className="navbar-end">
-          <button class="button is-primary is-medium p_fixed-button-size">
-            Next Page
-          </button>
+          <div className="navbar-end">
+            <button
+              className={
+                isLoading
+                  ? "button is-primary is-medium is-loading p_fixed-button-size"
+                  : "button is-primary is-medium p_fixed-button-size"
+              }
+              onClick={moveToNextPage}
+              disabled={nextPage === null}
+            >
+              Next Page
+            </button>
+          </div>
         </div>
-      </div>
-    </nav>
-  );
+      </nav>
+    );
+  }
 }
+
+NavBar.contextType = PeopleContext;
 
 export default NavBar;
