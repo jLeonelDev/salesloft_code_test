@@ -41,7 +41,6 @@ test('Test Application people is shown correctly', async () => {
 
 	const pageTextElement = screen.getByText('Page 1')
 	const peopleElement = screen.getAllByTestId('people-list')
-	console.log(peopleElement[0])
 	expect(pageTextElement).toBeInTheDocument()
 	expect(peopleElement.length).toEqual(2)
 })
