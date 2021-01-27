@@ -20,7 +20,7 @@ class DuplicateEmails extends React.Component {
         <tbody>
           {posibleDuplicates.length > 0
             ? posibleDuplicates.map((posibleDuplicate) => (
-                <tr key={posibleDuplicate.email}>
+                <tr key={posibleDuplicate.person1.email}>
                   <td>{posibleDuplicate.person1.email}</td>
                   <td>{posibleDuplicate.person2.email}</td>
                 </tr>
