@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PeopleContext from "./peopleContext";
+import ApiClient from "./../../api/client"
 
 const PeopleContextProvider = ({ children }) => {
   const [peopleList, setPeopleList] = useState([]);
@@ -23,19 +24,7 @@ const PeopleContextProvider = ({ children }) => {
   useEffect(() => {
     async function getPeople() {
       setIsLoading(true);
-
-      const API = process.env.REACT_APP_API_URL || "";
-
-      const people = await fetch(`${API}/people?page=${currentPage}`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((response) => response.json())
-        .catch((error) => console.log(error));
-
+      const people = await ApiClient.getPeopleRequest(currentPage)
       setPeopleList(people.data);
       setPreviousPage(people.metadata.paging.prev_page);
       setNextPage(people.metadata.paging.next_page);
