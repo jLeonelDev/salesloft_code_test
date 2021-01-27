@@ -7,7 +7,7 @@ class PeopleList extends React.Component {
     let { peopleList } = this.context;
     return peopleList.length > 0
       ? peopleList.map((person) => (
-          <div className="column is-4" key={person.email}>
+          <div data-testid="people-list" className="column is-4" key={person.email}>
             <Person
               name={person.name}
               email={person.email}
