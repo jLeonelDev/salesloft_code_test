@@ -1,1 +1,0 @@
-docker-compose exec salesloft_frontend /bin/sh -c "yarn test"
