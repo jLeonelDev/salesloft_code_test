@@ -19,29 +19,29 @@ const PeopleContextProvider = ({ children }) => {
       setCurrentPage(currentPage - 1);
     }
   };
-
-  const getPeople = async () => {
-    setIsLoading(true);
-
-    const API = process.env.REACT_APP_API_URL || "";
-
-    const people = await fetch(`${API}/people?page=${currentPage}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .catch((error) => console.log(error));
-
-    setPeopleList(people.data);
-    setPreviousPage(people.metadata.paging.prev_page);
-    setNextPage(people.metadata.paging.next_page);
-    setIsLoading(false);
-  };
-
+  
   useEffect(() => {
+    async function getPeople() {
+      setIsLoading(true);
+
+      const API = process.env.REACT_APP_API_URL || "";
+
+      const people = await fetch(`${API}/people?page=${currentPage}`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .catch((error) => console.log(error));
+
+      setPeopleList(people.data);
+      setPreviousPage(people.metadata.paging.prev_page);
+      setNextPage(people.metadata.paging.next_page);
+      setIsLoading(false);
+    }
+
     getPeople();
   }, [currentPage]);
 

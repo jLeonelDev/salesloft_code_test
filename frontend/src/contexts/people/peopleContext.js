@@ -6,8 +6,8 @@ const PeopleContext = React.createContext({
   previousPage: null,
   nextPage: null,
   isLoading: false,
-  moveToNextPage: null,
-  moveToPreviousPage: null
+  moveToNextPage: () => {},
+  moveToPreviousPage: () => {},
 });
 
 export default PeopleContext;
