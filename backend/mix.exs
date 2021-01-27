@@ -41,6 +41,7 @@ defmodule SalesLoft.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:httpoison, "~> 1.8"},
+      {:cors_plug, "~> 2.0.2"},
       {:mock, "~> 0.3.6", only: :test}
     ]
   end
